@@ -1,24 +1,25 @@
 const options = ["rock", "paper", "scissors"];
 let computerScore = 0;
 let playerScore = 0;
+const rockButton = document.getElementById("rock");
+const paperButton = document.getElementById("paper");
+const scissorsButton = document.getElementById("scissors");
+
+const playerTotal = document.getElementById("player-total");
+const computerTotal = document.getElementById("computer-total");
 
 const getComputerChoice = () => {
   let choice = options[Math.floor(Math.random() * 3)];
   return choice;
 };
+function removeListener() {
+  this.removeEventListener("click", playRound);
+}
+function playRound(playerSelection, computerSelection) {
+  playerSelection = this.id;
+  computerSelection = getComputerChoice();
 
-const getPlayerChoice = () => {
-  const choice = prompt("rock, paper or scissors?").toLowerCase();
-  if (choice === "rock" || choice === "paper" || choice === "scissors") {
-    return choice;
-  } else {
-    alert("please type a valid option!");
-    const repeatChoice = getPlayerChoice();
-    return repeatChoice;
-  }
-};
-
-const playRound = function (playerSelection, computerSelection) {
+  console.log(playerSelection, computerSelection);
   switch (true) {
     case playerSelection === computerSelection:
       const draw = `It's a draw! You both chose ${playerSelection}`;
@@ -28,62 +29,54 @@ const playRound = function (playerSelection, computerSelection) {
     case (playerSelection === "rock" && computerSelection === "paper") ||
       (playerSelection === "scissors" && computerSelection === "rock") ||
       (playerSelection === "paper" && computerSelection === "scissors"):
-      const lose = `You lose! ${computerSelection} beats ${playerSelection}`;
-      return lose;
+      // const lose = `You lose! ${computerSelection} beats ${playerSelection}`;
+      // return lose;
+      computerScore++;
+
       break;
 
     case (playerSelection === "paper" && computerSelection === "rock") ||
       (playerSelection === "rock" && computerSelection === "scissors") ||
       (playerSelection === "scissors" && computerSelection === "paper"):
-      const win = `You win! ${playerSelection} beats ${computerSelection}`;
-      return win;
-      break;
-  }
-  return;
-};
-
-function game() {
-  for (let i = 0; i < 5; i++) {
-    let playerSelection = getPlayerChoice();
-    let computerSelection = getComputerChoice();
-    let result = playRound(playerSelection, computerSelection);
-    console.log(playerSelection, computerSelection);
-    console.log(result);
-
-    if (result.includes("win")) {
+      // const win = `You win! ${playerSelection} beats ${computerSelection}`;
+      // return win;
       playerScore++;
 
-      console.log("1 point to player");
-    } else if (result.includes("lose")) {
-      computerScore++;
-
-      console.log("1 point to computer");
-    } else {
-      console.log("no points to anyone");
-    }
-  }
-  console.log(playerScore);
-  console.log(computerScore);
-
-  if (playerScore > computerScore) {
-    console.log("player wins!!!");
-  } else if (computerScore > playerScore) {
-    console.log("computer wins");
-  } else {
-    console.log("it's a draw!");
+      break;
   }
 
-  alert("game over thanks for playing");
+  console.log(playerScore, computerScore);
+  computerTotal.innerHTML = computerScore;
+  playerTotal.innerHTML = playerScore;
+  if (playerScore === 3) {
+    winner.textContent = "player";
+    buttons.forEach((btn) => btn.removeEventListener("click", playRound));
+    replay.classList.remove("hide");
+    winnerDeclaration.classList.remove("hide");
+  } else if (computerScore === 3) {
+    winner.textContent = "computer";
+    buttons.forEach((btn) => btn.removeEventListener("click", playRound));
+    replay.classList.remove("hide");
+    winnerDeclaration.classList.remove("hide");
+  }
+  return;
 }
+const replay = document.getElementById("replay");
+const winner = document.getElementById("winner");
+const winnerDeclaration = document.getElementById("winner-declaration");
+const buttons = document.querySelectorAll("button");
+buttons.forEach((btn) => {
+  btn.addEventListener("click", playRound);
+});
 
-game();
+//playRound
+//display instructions
+//listen for click
+//save as player choice
+//hide input on getting player choice
+//generate computer choice
 
-//loop 5 times
-//each time, call playRound with a new playerSelection and computerSelection
-//each time, check the result
-// if result includes 'win', add 1 to player
-// if result includes 'draw', do nothing
-//if result includes 'lose', add 1 to computer
-
-//check the score
-//declare the winner
+//compare the two choices
+//if winner, add 1 point
+//if draw, no points to either
+//remove event listeners when someone reaches 3
