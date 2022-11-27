@@ -3,12 +3,13 @@ body {
   font-family: "VT323", monospace, sans-serif;
   letter-spacing: 0.5ch;
 }
-
-.wrapper {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  justify-content: space-around;
+@media screen and (min-width: 600px) {
+  .wrapper {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-around;
+  }
 }
 
 .container {
