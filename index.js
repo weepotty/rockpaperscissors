@@ -46,8 +46,6 @@ function playRound(playerSelection, computerSelection) {
     case (playerSelection === "rock" && computerSelection === "paper") ||
       (playerSelection === "scissors" && computerSelection === "rock") ||
       (playerSelection === "paper" && computerSelection === "scissors"):
-      // const lose = `You lose! ${computerSelection} beats ${playerSelection}`;
-      // return lose;
       computerScore++;
       roundWinner.textContent = "1 point to Computer!";
       break;
@@ -55,8 +53,6 @@ function playRound(playerSelection, computerSelection) {
     case (playerSelection === "paper" && computerSelection === "rock") ||
       (playerSelection === "rock" && computerSelection === "scissors") ||
       (playerSelection === "scissors" && computerSelection === "paper"):
-      // const win = `You win! ${playerSelection} beats ${computerSelection}`;
-      // return win;
       playerScore++;
       roundWinner.textContent = "1 point to Player!";
       break;
@@ -82,15 +78,3 @@ function playRound(playerSelection, computerSelection) {
 buttons.forEach((btn) => {
   btn.addEventListener("click", playRound);
 });
-
-//playRound
-//display instructions
-//listen for click
-//save as player choice
-//hide input on getting player choice
-//generate computer choice
-
-//compare the two choices
-//if winner, add 1 point
-//if draw, no points to either
-//remove event listeners when someone reaches 3
