@@ -15,7 +15,7 @@ const roundWinner = document.getElementById("round-winner");
 
 const getComputerChoice = () => {
   let choice = options[Math.floor(Math.random() * 3)];
-  console.log(computerPics);
+
   computerPics.forEach((pic) => {
     pic.style.backgroundColor = "white";
   });
@@ -37,7 +37,6 @@ function playRound(playerSelection, computerSelection) {
   playerSelection = this.id;
   computerSelection = getComputerChoice();
 
-  console.log(playerSelection, computerSelection);
   switch (true) {
     case playerSelection === computerSelection:
       roundWinner.textContent = "This round is a draw!";
@@ -58,21 +57,27 @@ function playRound(playerSelection, computerSelection) {
       break;
   }
 
-  console.log(playerScore, computerScore);
   computerTotal.innerHTML = computerScore;
   playerTotal.innerHTML = playerScore;
+
+  checkFinalScore();
+  return;
+}
+
+function checkFinalScore() {
   if (playerScore === 3) {
     winner.textContent = "PLAYER";
     buttons.forEach((btn) => btn.removeEventListener("click", playRound));
     replay.classList.remove("hide");
     winnerDeclaration.classList.remove("hide");
+    roundWinner.style.display = "none";
   } else if (computerScore === 3) {
     winner.textContent = "COMPUTER";
     buttons.forEach((btn) => btn.removeEventListener("click", playRound));
     replay.classList.remove("hide");
     winnerDeclaration.classList.remove("hide");
+    roundWinner.style.display = "none";
   }
-  return;
 }
 
 buttons.forEach((btn) => {

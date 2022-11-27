@@ -62,7 +62,9 @@ button:focus {
     flex-direction: row;
   }
 } */
-
+#winner-declaration {
+  background-color: rgb(252, 221, 81);
+}
 #scoreboard {
   margin: 20px;
 }
