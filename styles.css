@@ -6,7 +6,7 @@ body {
 
 .wrapper {
   display: flex;
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
   justify-content: space-around;
 }
@@ -37,7 +37,8 @@ button {
   border: 0ch;
   font-family: inherit;
   font-size: 1.5rem;
-  width: auto;
+  padding: 0;
+  margin: 0;
 }
 
 button:hover {
