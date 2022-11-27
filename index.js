@@ -4,14 +4,32 @@ let playerScore = 0;
 const rockButton = document.getElementById("rock");
 const paperButton = document.getElementById("paper");
 const scissorsButton = document.getElementById("scissors");
-
+const computerPics = document.querySelectorAll(".computer-pics > img");
 const playerTotal = document.getElementById("player-total");
 const computerTotal = document.getElementById("computer-total");
+const replay = document.getElementById("replay");
+const winner = document.getElementById("winner");
+const winnerDeclaration = document.getElementById("winner-declaration");
+const buttons = document.querySelectorAll("button");
+const roundWinner = document.getElementById("round-winner");
 
 const getComputerChoice = () => {
   let choice = options[Math.floor(Math.random() * 3)];
+  console.log(computerPics);
+  computerPics.forEach((pic) => {
+    pic.style.backgroundColor = "white";
+  });
+  if (choice === "rock") {
+    document.getElementById("img-rock").style.backgroundColor = "lightpink";
+  } else if (choice === "paper") {
+    document.getElementById("img-paper").style.backgroundColor = "lightpink";
+  } else if (choice === "scissors") {
+    document.getElementById("img-scissors").style.backgroundColor = "lightpink";
+  }
+
   return choice;
 };
+
 function removeListener() {
   this.removeEventListener("click", playRound);
 }
@@ -22,8 +40,7 @@ function playRound(playerSelection, computerSelection) {
   console.log(playerSelection, computerSelection);
   switch (true) {
     case playerSelection === computerSelection:
-      const draw = `It's a draw! You both chose ${playerSelection}`;
-      return draw;
+      roundWinner.textContent = "This round is a draw!";
       break;
 
     case (playerSelection === "rock" && computerSelection === "paper") ||
@@ -32,7 +49,7 @@ function playRound(playerSelection, computerSelection) {
       // const lose = `You lose! ${computerSelection} beats ${playerSelection}`;
       // return lose;
       computerScore++;
-
+      roundWinner.textContent = "1 point to Computer!";
       break;
 
     case (playerSelection === "paper" && computerSelection === "rock") ||
@@ -41,7 +58,7 @@ function playRound(playerSelection, computerSelection) {
       // const win = `You win! ${playerSelection} beats ${computerSelection}`;
       // return win;
       playerScore++;
-
+      roundWinner.textContent = "1 point to Player!";
       break;
   }
 
@@ -49,22 +66,19 @@ function playRound(playerSelection, computerSelection) {
   computerTotal.innerHTML = computerScore;
   playerTotal.innerHTML = playerScore;
   if (playerScore === 3) {
-    winner.textContent = "player";
+    winner.textContent = "PLAYER";
     buttons.forEach((btn) => btn.removeEventListener("click", playRound));
     replay.classList.remove("hide");
     winnerDeclaration.classList.remove("hide");
   } else if (computerScore === 3) {
-    winner.textContent = "computer";
+    winner.textContent = "COMPUTER";
     buttons.forEach((btn) => btn.removeEventListener("click", playRound));
     replay.classList.remove("hide");
     winnerDeclaration.classList.remove("hide");
   }
   return;
 }
-const replay = document.getElementById("replay");
-const winner = document.getElementById("winner");
-const winnerDeclaration = document.getElementById("winner-declaration");
-const buttons = document.querySelectorAll("button");
+
 buttons.forEach((btn) => {
   btn.addEventListener("click", playRound);
 });

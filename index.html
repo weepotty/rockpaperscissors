@@ -14,38 +14,68 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="container">
-      <div id="heading">
-        Welcome to ROCK PAPER SCISSORS.. <br />First to 3 wins
-      </div>
-      <div id="instructions">Choose your weapon:</div>
-      <div id="button-container" class="flex">
-        <button id="rock">
-          <img src="images/rock@4x.png" alt="rock" width="200px" />
-        </button>
-        <button id="paper">
-          <img src="images/paper.png" alt="paper" height="200px" />
-        </button>
-        <button id="scissors">
-          <img src="images/scissors.png" alt="scissors" width="200px" />
-        </button>
-      </div>
-      <div id="players" class="flex">
-        <img src=images/sparkle.png width="50px">
-        <p>Player vs Computer</p>
-        <img src=images/sparkle.png width="50px">
-      </div>
-      <div id="scoreboard">
-        <span class="score" id="player-total">0</span>
-        <span class="score" id="computer-total">0</span>
-      </div>
-      <div id="winner-declaration" class="hide">
-        The winner is... <span id="winner"></span>!
-      </div>
-      <div>
-        <button class="hide" id="replay" onClick="window.location.reload()">
-          replay
-        </button>
+    <div class="wrapper">
+      <div class="container">
+        <div id="heading">
+          Welcome to ROCK PAPER SCISSORS.. <br />First to 3 wins!
+        </div>
+        <div class="choices flex">
+          <div id="player-module">
+            <div class="instructions">Choose your weapon:</div>
+            <div id="button-container" class="flex">
+              <button id="rock">
+                <img src="images/rock@4x.png" alt="rock" width="100px" />
+              </button>
+              <button id="paper">
+                <img src="images/paper.png" alt="paper" width="100px" />
+              </button>
+              <button id="scissors">
+                <img src="images/scissors.png" alt="scissors" width="100px" />
+              </button>
+            </div>
+          </div>
+          <div id="computer-module">
+            <div class="instructions">Computer chooses:</div>
+            <div class="flex computer-pics">
+              <img
+                id="img-rock"
+                src="images/rock@4x.png"
+                alt="rock"
+                width="100px"
+              />
+              <img
+                id="img-paper"
+                src="images/paper.png"
+                alt="paper"
+                width="100px"
+              />
+              <img
+                id="img-scissors"
+                src="images/scissors.png"
+                alt="scissors"
+                width="100px"
+              />
+            </div>
+          </div>
+        </div>
+        <div id="players" class="flex">
+          <img src=images/sparkle.png width="50px">
+          <p>Player vs Computer</p>
+          <img src=images/sparkle.png width="50px">
+        </div>
+        <div id="round-winner"></div>
+        <div id="scoreboard">
+          <span class="score" id="player-total">0</span>
+          <span class="score" id="computer-total">0</span>
+        </div>
+        <div id="winner-declaration" class="hide">
+          <span id="winner"></span> WINS THE GAME!
+        </div>
+        <div>
+          <button class="hide" id="replay" onClick="window.location.reload()">
+            replay
+          </button>
+        </div>
       </div>
     </div>
     <script src="index.js"></script>
