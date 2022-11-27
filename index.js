@@ -12,6 +12,8 @@ const winner = document.getElementById("winner");
 const winnerDeclaration = document.getElementById("winner-declaration");
 const buttons = document.querySelectorAll("button");
 const roundWinner = document.getElementById("round-winner");
+const gameOver = document.getElementById("game-over");
+const choiceModule = document.getElementById("choices");
 
 const getComputerChoice = () => {
   let choice = options[Math.floor(Math.random() * 3)];
@@ -67,6 +69,8 @@ function changeDisplay() {
   replay.classList.remove("hide");
   winnerDeclaration.classList.remove("hide");
   roundWinner.classList.add("hide");
+  gameOver.classList.remove("hide");
+  choiceModule.classList.add("hide");
 }
 
 function checkFinalScore() {
