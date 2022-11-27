@@ -63,20 +63,20 @@ function playRound(playerSelection, computerSelection) {
   checkFinalScore();
   return;
 }
+function changeDisplay() {
+  replay.classList.remove("hide");
+  winnerDeclaration.classList.remove("hide");
+}
 
 function checkFinalScore() {
   if (playerScore === 3) {
     winner.textContent = "PLAYER";
     buttons.forEach((btn) => btn.removeEventListener("click", playRound));
-    replay.classList.remove("hide");
-    winnerDeclaration.classList.remove("hide");
-    roundWinner.style.display = "none";
+    changeDisplay();
   } else if (computerScore === 3) {
     winner.textContent = "COMPUTER";
     buttons.forEach((btn) => btn.removeEventListener("click", playRound));
-    replay.classList.remove("hide");
-    winnerDeclaration.classList.remove("hide");
-    roundWinner.style.display = "none";
+    changeDisplay();
   }
 }
 
