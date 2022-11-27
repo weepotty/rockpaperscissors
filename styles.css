@@ -2,6 +2,7 @@ body {
   font-size: 1.5rem;
   font-family: "VT323", monospace, sans-serif;
   letter-spacing: 0.5ch;
+  box-sizing: border-box;
 }
 @media screen and (min-width: 600px) {
   .wrapper {
@@ -13,6 +14,7 @@ body {
 }
 
 .container {
+  padding-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,10 +78,11 @@ button:focus {
 }
 #players p {
   flex-shrink: 0;
+  margin: 0;
 }
 
 #players img {
-  max-width: 50px;
+  max-height: 40px;
 }
 .score {
   background-color: black;
@@ -95,8 +98,13 @@ button:focus {
 }
 #replay {
   background-color: rgb(85, 229, 214);
+  background-color: #cdedc7;
   color: black;
 }
 div {
   text-align: center;
+}
+#round-winner {
+  margin: 0;
+  padding: 0;
 }

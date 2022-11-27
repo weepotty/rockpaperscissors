@@ -20,11 +20,11 @@ const getComputerChoice = () => {
     pic.style.backgroundColor = "white";
   });
   if (choice === "rock") {
-    document.getElementById("img-rock").style.backgroundColor = "lightpink";
+    document.getElementById("img-rock").style.backgroundColor = "#cdedc7";
   } else if (choice === "paper") {
-    document.getElementById("img-paper").style.backgroundColor = "lightpink";
+    document.getElementById("img-paper").style.backgroundColor = "#cdedc7";
   } else if (choice === "scissors") {
-    document.getElementById("img-scissors").style.backgroundColor = "lightpink";
+    document.getElementById("img-scissors").style.backgroundColor = "#cdedc7";
   }
 
   return choice;
@@ -66,6 +66,7 @@ function playRound(playerSelection, computerSelection) {
 function changeDisplay() {
   replay.classList.remove("hide");
   winnerDeclaration.classList.remove("hide");
+  roundWinner.classList.add("hide");
 }
 
 function checkFinalScore() {
