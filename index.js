@@ -19,14 +19,15 @@ const getComputerChoice = () => {
   let choice = options[Math.floor(Math.random() * 3)];
 
   computerPics.forEach((pic) => {
-    pic.style.backgroundColor = "white";
+    pic.classList.remove("selected");
   });
+
   if (choice === "rock") {
-    document.getElementById("img-rock").style.backgroundColor = "#cdedc7";
+    document.getElementById("img-rock").classList.add("selected");
   } else if (choice === "paper") {
-    document.getElementById("img-paper").style.backgroundColor = "#cdedc7";
+    document.getElementById("img-paper").classList.add("selected");
   } else if (choice === "scissors") {
-    document.getElementById("img-scissors").style.backgroundColor = "#cdedc7";
+    document.getElementById("img-scissors").classList.add("selected");
   }
 
   return choice;
