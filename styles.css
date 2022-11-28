@@ -46,9 +46,7 @@ button {
 
 button:hover {
   background-color: rgb(182, 241, 229);
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgb(184, 184, 184);
+  border: 1px solid rgb(184, 184, 184);
 }
 
 button:focus {
@@ -56,9 +54,7 @@ button:focus {
 }
 
 .selected {
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgb(184, 184, 184);
+  border: 1px solid rgb(184, 184, 184);
   background-color: #cdedc7;
 }
 
